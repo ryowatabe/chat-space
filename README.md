@@ -7,7 +7,7 @@
 |e-mail|String|null: false, unique: true|
 |password|String| null: false|
 
-###Association
+### Association
 - has many :groups, through:members
 - has many :members
 - has many :messages
@@ -30,12 +30,12 @@
 |------|----|-------|
 |group_name|string|null: false |
 
-###Association
+### Association
 - has many :user  :through:members
 - has many :members
 - has many :messages
 
-##messagesテーブル
+## messagesテーブル
 |Column|Type|Options|
 |------|----|-------|
 |message|string|null: true|
