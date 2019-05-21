@@ -23,15 +23,14 @@
 ### Association
 - belongs_to :group
 - belongs_to :user
-- has many :messages
 
 ## groupsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|group_name|string|null: false |
+|name|string|null: false |
 
 ### Association
-- has many :user  :through:members
+- has many :users  :through:members
 - has many :members
 - has many :messages
 
@@ -47,4 +46,3 @@
 ### Association
 - belongs to :user
 - belongs to :group
-- belongs to :member
