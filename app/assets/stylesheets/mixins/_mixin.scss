@@ -1,0 +1,27 @@
+/*********************************
+関数名 : clearfit
+意味 : floatでうまく合わせてくれる
+
+********************************/
+
+@mixin clearfix {
+  &::after {
+      content: "";
+      display: block;
+      clear: both;
+  }
+}
+
+/*********************************
+関数名：flexbox
+意味：
+
+*********************************/
+
+$prefixes: -webkit-, -moz-, -ms-, -o-, '';
+
+@mixin flexbox {
+  @each $prefix in $prefixes {
+    display: #{$prefix}flex;
+  }
+}

@@ -1,0 +1,43 @@
+%body
+  .wrapper
+    = render 'chat_side'
+    .chat-main
+      .main-header
+        .left-header
+          %h2.left-header__name
+            グループ名
+          %ul.left-header__members
+            Member：
+            %li.member メンバー１
+            %li.member メンバー2
+            %li.member メンバー3
+        .right-header
+          .main-header__edit
+            = link_to "Edit"
+      .messages
+        .message
+          .upper-info
+            %p.upper-info__user
+              メンバー１
+            %p.upper-info__date
+              2019/05/24(Fri)
+          .bottom-info
+            %p.bottom-info__text 
+              メッセージ１
+        .message
+          .upper-info
+            %p.upper-info__user
+              メンバー２
+            %p.upper-info__date
+              2019/05/24(Fri)
+          .bottom-info
+            %p.bottom-info__text 
+              メッセージ２
+      .form
+        .new-message
+          %input.new-message__text{:placeholder => "type a message"}/
+          .new-message__image
+            %label.new-message__image__label
+              %i.fa.fa-image
+              %input.new-message__image__label__input{:type => "file"}/
+          %input.new-message__submit{:type => "submit", :value => "Send"}/
