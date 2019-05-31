@@ -5,7 +5,7 @@
       .main-header
         .left-header
           %h2.left-header__name
-            グループ名
+            = @group.name
           %ul.left-header__members
             Member：
             %li.member メンバー１
@@ -15,29 +15,12 @@
           .main-header__edit
             = link_to "Edit"
       .messages
-        .message
-          .upper-info
-            %p.upper-info__user
-              メンバー１
-            %p.upper-info__date
-              2019/05/24(Fri)
-          .bottom-info
-            %p.bottom-info__text 
-              メッセージ１
-        .message
-          .upper-info
-            %p.upper-info__user
-              メンバー２
-            %p.upper-info__date
-              2019/05/24(Fri)
-          .bottom-info
-            %p.bottom-info__text 
-              メッセージ２
+        = render @messeages
       .form
-        .new-message
-          %input.new-message__text{:placeholder => "type a message"}/
-          .new-message__image
-            %label.new-message__image__label
-              %i.fa.fa-image
-              %input.new-message__image__label__input{:type => "file"}/
-          %input.new-message__submit{:type => "submit", :value => "Send"}/
+        = form_for [@group, @messeage] do |f|
+          = f.text_field :messeages, class: 'form__messeage', placeholder: 'type a messeage'
+          .form__mask
+            = f.label :image, class: 'form__mask__image' do
+              = fa_icon 'picture-o', class: 'icon'
+              = f.file_field :image, class: 'hidden'
+          = f.submit 'Send', class: 'form__submit'
