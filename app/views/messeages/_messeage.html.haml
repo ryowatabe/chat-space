@@ -1,0 +1,11 @@
+.message
+  .upper-info
+    %p.upper-info__user
+      = messeage.user.name
+    %p.upper-info__date
+      = messeage.created_at.strftime("%Y/%m/%d %H:%M")
+  .bottom-info
+    - if messeage.messeages.present?
+      %p.bottom-info__text 
+        = messeage.messeages
+    = image_tag messeage.image.url, class: 'lower-messeage__image' if messeage.image.present?
