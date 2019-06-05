@@ -38,9 +38,10 @@
   }
   .messages{
     background-color: $mainBackColor;
-    height: calc(100% - 100px - 90px);
-    padding: 46px 40px;
+    height: calc(100vh - 190px);
+    padding: 46px 40px 0;
     box-sizing: border-box;
+    overflow: scroll;
     border-top: 1px solid #eeeeee; 
     .message{
       .upper-info{
@@ -62,6 +63,7 @@
           color: #434a54;
           font-size: 14px;
           margin-bottom: 40px;
+
         }
       }
     }

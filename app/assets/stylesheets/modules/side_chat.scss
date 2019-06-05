@@ -2,6 +2,10 @@
   box-sizing: border-box;
   color: $white;
   width: 300px;
+  a {
+    color: $white;
+    text-decoration: none;
+  }
   .side-header{
     background-color: $sideUserBackColor;
     height: 100px;
@@ -25,6 +29,7 @@
     }
   }
   .groups{
+    overflow: scroll;
     background-color: $sideGroupBackColor;
     height: calc(100vh - 100px);
     padding: 0 20px;
