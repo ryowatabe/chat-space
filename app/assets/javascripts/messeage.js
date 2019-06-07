@@ -47,21 +47,18 @@ $(function(){
       scrollTop: $('.messages')[0].scrollHeight
     },'fast');
   })
-  
+
 /*******************************************
  *          自動更新用ソフト                  *
  *******************************************/
   $(function(){
-    setInterval(reloadMessages, 5000);
+        setInterval(reloadMessages, 5000);
   });
+
   var reloadMessages = function() {
     group = $('.message').data('group')
     url = "/groups/" + group + "/api/messeages"
-    if($('.messages')[0]){
       last_message_id = $('.message:last').data('id')
-    } else {
-      last_message_id = 0
-    }
     $.ajax({
       url: url,
       type: 'GET',
@@ -69,16 +66,18 @@ $(function(){
       dataType: 'json'
     })
     .done(function(messages){
-      messages.forEach(function(message){
-        insertHTML = buildHTML(message);
-        $('.messages').append(insertHTML)
-      })
+      if (messages.length !== 0) {
+        messages.forEach(function(message){
+          insertHTML = buildHTML(message);
+          $('.messages').append(insertHTML)
+        })
+        $('.messages').animate({
+          scrollTop: $('.messages')[0].scrollHeight
+        },'fast');
+      }
     })
     .fail(function() {
-      alert("メッセージの送信に失敗しました");
+      alert("自動更新に失敗しました。");
     });
-    $('.messages').animate({
-      scrollTop: $('.messages')[0].scrollHeight
-    },'fast');
   }
 });
