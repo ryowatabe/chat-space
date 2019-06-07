@@ -129,7 +129,7 @@ $(function(){
       })
     })
     .fail(function() {
-      console.log("メッセージの送信に失敗しました");
+      alert("メッセージの送信に失敗しました");
     });
     $('.messages').animate({
       scrollTop: $('.messages')[0].scrollHeight
