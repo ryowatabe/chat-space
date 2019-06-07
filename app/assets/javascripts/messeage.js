@@ -1,7 +1,7 @@
 
 $(function(){
   function buildHTML(data) {  
-    var html = `<div class="message">
+    var html = `<div class="message" data-id =${data.id}>
                   <div class="upper-info">
                     <p class="upper-info__user">${data.user_name}</p>
                     <p class="upper-info__date">${data.time}</p>
@@ -47,4 +47,37 @@ $(function(){
       scrollTop: $('.messages')[0].scrollHeight
     },'fast');
   })
+
+/*******************************************
+ *          自動更新用ソフト                  *
+ *******************************************/
+  $(function(){
+        setInterval(reloadMessages, 5000);
+  });
+
+  var reloadMessages = function() {
+    group = $('.message').data('group')
+    url = "/groups/" + group + "/api/messeages"
+      last_message_id = $('.message:last').data('id')
+    $.ajax({
+      url: url,
+      type: 'GET',
+      data: {id: last_message_id},
+      dataType: 'json'
+    })
+    .done(function(messages){
+      if (messages.length !== 0) {
+        messages.forEach(function(message){
+          insertHTML = buildHTML(message);
+          $('.messages').append(insertHTML)
+        })
+        $('.messages').animate({
+          scrollTop: $('.messages')[0].scrollHeight
+        },'fast');
+      }
+    })
+    .fail(function() {
+      alert("自動更新に失敗しました。");
+    });
+  }
 });
