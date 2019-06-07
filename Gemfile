@@ -60,3 +60,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
   gem 'mini_magick'
   gem 'jquery-rails'
   gem 'jquery-ui-rails'
+  gem 'pry-byebug', group: :development
