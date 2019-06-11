@@ -1,6 +1,12 @@
 
 $(function(){
-  function buildHTML(data) {  
+  function buildHTML(data) {
+    if (data.image.url){
+      var ImageHTML = `<img class="lower-messeage__image" src="${data.image.url}">`
+    } else{
+      var ImageHTML = ""
+    }
+
     var html = `<div class="message" data-id =${data.id}>
                   <div class="upper-info">
                     <p class="upper-info__user">${data.user_name}</p>
@@ -8,7 +14,7 @@ $(function(){
                   </div>
                   <div class="bottom-info">
                     <p class="bottom-info__text">${data.text}</p>
-                    <img class="lower-messeage__image" src="${data.image.url}" alt=" ",onerror="this.style.display='none'/>
+                    ${ImageHTML}
                   </div>
                 </div>`
     return html
