@@ -3,7 +3,7 @@
   .side-header
     %h3.side-header__user-name 
       = current_user.name
-    %ul.user-menu
+    %ul.user-menu{"data-turbolinks": "false"}
       %li.user-menu__edit-user
         = link_to new_group_path do
           %i.fa.fa-pencil-square-o
@@ -12,7 +12,7 @@
           %i.fa.fa-cog
   .groups
     - current_user.groups.each do |group|
-      .group
+      .group{"data-turbolinks": "false"}
         = link_to group_messeages_path(group) do
           .group__group-name
             = group.name
