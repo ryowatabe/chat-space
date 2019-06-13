@@ -76,3 +76,4 @@ end
 
 gem 'fog-aws'
 
+gem 'rubocop', '~> 0.71.0', require: false
